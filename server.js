@@ -2,7 +2,7 @@
   
 // }
 
-require("dotenv").config()
+// require("dotenv").config()
 
 
 // Importing Libraies that we installed using npm
@@ -43,7 +43,7 @@ let users = []
 app.use(express.urlencoded({extended: false}))
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'jbsiugsuiwo',
     resave: false, // We wont resave the session variable if nothing is changed
     saveUninitialized: false,
     store: MongoStore.create({
