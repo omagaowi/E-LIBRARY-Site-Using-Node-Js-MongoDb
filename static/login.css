@@ -1,0 +1,17 @@
+section{
+    width: 100vw;
+}
+
+.newform{
+    width: 400px;
+}
+
+@media screen and (max-width: 450px){
+    .newform{
+        width: 90vw;
+    }
+
+    .right-side a{
+        display: none;
+    }
+}

@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="/addbook.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+    <script src="/addbook.js" defer></script>
+    <script src="/editbook.js" defer></script>
+
+    <style>
+        .selectelem{
+            position: relative;
+        }
+        .buttons{
+            display: flex;
+        }
+        .buttons button{
+            width: 100px;
+            border-radius: 0px;
+            margin: 0px 10px;
+        }
+        .buttons button:nth-child(2){
+            background: yellow;
+        }
+        .buttons button:nth-child(3){
+            background: red;
+            color: azure;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+     <% books.forEach( book => { %>
+        <form action="/editbooks/<%= book.id %>" method="POST" enctype="multipart/form-data">
+            <div class="picArea">
+                <!-- <i class="fas fa-image"></i> -->
+                <img src="data:book/<%=book.bookcover.contentType%>;base64,
+                <%=book.bookcover.data.toString('base64')%>" class="book-cover" alt="">
+                <label title="Add Book Cover" for="picinput"><input type="file" data-doc="<" id="picinput" name="cover" class="picInput"><i class="fas fa-plus"></i></label>
+            </div>
+            <div class="details">
+                <h1>Edit Book</h1>
+                <input type="text" placeholder="Book Title" name="title" class="title" value="<%= book.title %>" required>
+                <input type="text" placeholder="Book Author" name="author" class="author" value="<%= book.author %>" required>
+                <!-- <p class="destext">Description</p> -->
+                <textarea name="description" id="" cols="30" rows="10" class="description" data-doc="<%= book.description %>" required placeholder="Book Description"></textarea>
+                <div class="categories">
+                    <div class="selects">
+                        <% if(Array.isArray(categories)){ %>
+                            <% categories.forEach(element => { %>
+                                <div class="selectElem">
+                                    <select name="categories" data-doc="<%= element %>" id="" class="select" required>
+                                        <option value="Educational">Educational</option>
+                                        <option value="Motivational">Motivational</option>
+                                        <option value="Real Life">Real Life</option>
+                                        <option value="Children">Children</option>
+                                        <option value="Romance">Romance</option>
+                                        <option value="Sci-fi">Sci-fi</option>
+                                        <option value="Adventure">Adventure</option>
+                                        <option value="Action">Action</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                           <% }); %>
+
+                        <% }else{ %>
+                                <select  name="categories" data-doc="<%= categories %>" id="" class="select single" required>
+                                    <option value="Educational">Educational</option>
+                                    <option value="Motivational">Motivational</option>
+                                    <option value="Real Life">Real Life</option>
+                                    <option value="Children">Children</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Sci-fi">Sci-fi</option>
+                                    <option value="Adventure">Adventure</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                        <% } %>
+                        
+                    </div>
+                    <button class="addBtn" title="Add Category" type="button"><i class="fa fa-plus"></i></button>
+                </div>
+                <div class="buttons"> 
+                    <button type="button" title="Change Book File"><label for="bookInput"><i class="fas fa-link"></i>Change File <input type="file"  name="book" id="bookInput"></label></button>
+                    <button type="submit"  class="uploadBtn" title="Upload Book"><i class="fas fa-plus"></i>Update Book</button>
+                    <button type="button" data-doc="<%= book.id %>" class="deleteBtn" title="Delete Book"><i class="fas fa-trash"></i>Delete Book</button>
+                </div>
+            </div>
+           </form>
+    <% }); %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results For <%=value %></title>
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h2><a href="/">E-Library</a></h2>
+             <div class="search"> 
+                 <span><i class="fas fa-search"></i></span>
+                 <input type="text" placeholder="Search..." value="<%=value %>">
+                 <button title="Search"><i class="fas fa-arrow-right"></i></button>
+             </div>
+             <div class="right-side">
+                <a href="/myreadlist" title="Reading List"><i class="fas fa-list"></i></a>
+                <a href="/myfavourites" title="Favourites"><i class="far fa-star"></i></a>
+                <span  class="user"><img src="/images/USER2.png" alt="" title="Me"><p>Omaga O</p></span>
+             </div>
+        </nav>
+        <div class="book-container">
+            <h1>Search Results For <b><%= value %></b></h1>
+            <div class="books homeboooks searchbooks">
+                <% if(allbooks.length == 0){ %>
+                    <div class="none-available">
+                        <i class="fas fa-heart-broken"></i>
+                        <h1>No Books Found!</h1>
+                        <p>No books found with the name <b><%=value %></b></p>
+                    </div>
+                <% }else{ %>
+                    <%allbooks.forEach(book =>{  %>
+                        <div class="book">
+                            <img src="data:book/<%=book.bookcover.contentType%>;base64,
+                            <%=book.bookcover.data.toString('base64')%>">
+                            <div class="labels">
+                                <span><a href="/readbook/<%= book.id %>"><h3><%= book.title %></h3></a></span>
+                                <span><p><%=book.author %></p></span>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+               
+            </div>
+        </div>
+        
+        <div class="account">
+            <div class="account-details">
+                <i class="fas fa-times exit"></i>
+                <% if(admin == true) {%>
+                    <h5><a href="/admin">Admin Account</a></h5>
+                <% } else {%>
+
+                <% } %>
+                <i class="fas fa-user"></i>
+                <h2 class=""><%=name  %></h2>
+                <p><i class="fas fa-envelope"></i><%=email %></p>
+                <!-- <a href="#" class="status">Admin</a> -->
+                <div class="buttons">
+                    <form action="/logout?_method=DELETE" method="POST">
+                        <button class="nav-link fw-bold py-1 px-0 btn p=3 btn-dark text-white" type="submit" ><i class="fas fa-sign-out-alt"></i> Logout</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/home.js"></script>
+</body>
+</html>

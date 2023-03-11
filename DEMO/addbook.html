@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="../static/addbook.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+    <script src="../static/addbook.js" defer></script>
+</head>
+<body>
+    <div class="container">
+       <form action="">
+        <div class="picArea">
+            <i class="fas fa-image"></i>
+            <img src="../static/images/g" class="book-cover" alt="">
+            <label title="Add Book Cover" for="picinput"><input type="file" id="picinput" class="picInput"><i class="fas fa-plus"></i></label>
+        </div>
+        <div class="details">
+            <h1>Add Book</h1>
+            <input type="text" placeholder="Book Title" name="title" class="title">
+            <input type="text" placeholder="Book Author" name="title" class="author">
+            <!-- <p class="destext">Description</p> -->
+            <textarea name="" id="" cols="30" rows="10" class="description" placeholder="Book Description"></textarea>
+            <div class="categories">
+                <div class="selects">
+                    <select name="" id="" class="select">
+                        <option value="Educational">Educational</option>
+                        <option value="Motivational">Motivational</option>
+                        <option value="Real Life">Real Life</option>
+                        <option value="Children">Children</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Sci-fi">Sci-fi</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Action">Action</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <!-- <select name="" id="">
+                        <option value="">Eductaional</option>
+                        <option value="">Inspirational</option>
+                        <option value="">Real Life</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">Eductaional</option>
+                        <option value="">Inspirational</option>
+                        <option value="">Real Life</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">Eductaional</option>
+                        <option value="">Inspirational</option>
+                        <option value="">Real Life</option>
+                    </select> -->
+                </div>
+                <button class="addBtn" title="Add Category" type="button"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="buttons">
+                <button type="button" title="Attach Book File"><i class="fas fa-link"></i>Book File</button>
+                <button type="button" title="Upload Book"><i class="fas fa-plus"></i>Add Book</button>
+            </div>
+        </div>
+       </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multer</title>
+</head>
+<body>
+    <h1>Multer Test</h1>
+    <form action="/up" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name">
+        <input type="file" name="pic" id="">
+        <input type="file" name="book" id="">
+        <button>submit</button>
+    </form>
+
+    <h1>Images</h1>
+    <% books.forEach((book)=>{ %>
+        <p><%= book.name %></p>
+        <img src="data:book/<%=book.image.contentType%>;base64,
+                     <%=book.image.data.toString('base64')%>">
+    <% }) %>
+    
+</body>
+</html>

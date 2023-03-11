@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | E-Library</title>
+    <link rel="stylesheet" href="../static/signin.css">
+    <link rel="stylesheet" href="../static/login.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <h1>E-Library</h1>
+            </div>
+            <div class="right-side">
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </nav>
+        <div class="main">
+            <section class="login">
+                <form class="newform" action="/login" method="POST">
+                     <h3>Login</h3>
+                         <label for="" class="emailLabel"><input type="email" name="email" class="signupEmail"   placeholder="." required></label>
+                         <!-- pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" -->
+                         <label for="" class="passwordLabel"><input type="password" name="password" class="signupPassword" placeholder="."  class=""signupPassword required></label>
+                         <!-- pattern="[a-zA-Z0-9-_@+=/\|]{8,}" -->
+                         <button  type="submit" class="loginBtn">Login</button>
+                     <h4>Don't have an Account? <a href="signup.html">Sign up</a></h4>
+                </form>
+             </section>
+        </div>
+    </div>
+</body>
+</html>

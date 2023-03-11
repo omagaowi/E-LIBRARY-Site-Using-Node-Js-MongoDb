@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+h1{
+    font-size: 35px;
+    margin-top: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;;
+}
+
+.picArea{
+    width: 300px;
+    height: 100%;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+form, .form{
+    width: 60%;
+    height: 75%;
+    display: flex;
+    /* background: bisque; */
+}
+
+.details{
+    width: 400px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: #e3e3e3;
+}
+.details input{
+    border: none;
+    padding-left: 6px;
+    outline: none;
+    text-transform: capitalize;
+}
+
+.details .title{
+    width: 90%;
+    height: 42px;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+
+.details .author{
+    width: 90%;
+    font-size: 17px;
+    height: 32px;
+    margin-bottom: 20px;
+}
+
+.description{
+    width: 90%;
+    border: none;
+    outline: none;
+    height: 130px;
+}
+
+.select{
+    width: 100px;
+    margin: 0px 2.5px;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.primaryElem{
+    position: relative;
+}
+
+.fa-times{
+    position: absolute;
+    top: 45%;
+    font-size: 14px;
+    right: 7px;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.buttons{
+    margin-top: 15px;
+}
+
+button i{
+    margin-right: 2px;
+}
+
+.buttons button{
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+}
+
+button:hover{
+    background: #00af66;
+    cursor: pointer;
+    color: #fff;
+}
+
+.picArea{
+    position: relative;
+    background: #e3e3e3;
+}
+
+.picArea label{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+label{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    background: hsl(0, 0%, 78%);
+}
+
+.picArea .fa-plus{
+    font-size: 47px;
+    color: #333333;
+}
+
+section{
+    display: flex;
+}
+
+.picArea input{
+    display: none;
+}
+
+.addBtn{
+    /* position: fixed; */
+    width: 30px;
+    border: none;
+    outline: none;
+    background: #fff;
+    cursor: pointer;
+    height: 16px;
+    margin-top: 2px;
+    color: rgb(101, 101, 101);
+}
+
+.fa-image{
+    position: absolute;
+    top: 50%;
+    /* z-index: -1; */
+    left: 50%;
+    color: gray;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+}
+
+
+
+
+.categories{
+    width: 320px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+}
+
+.categories .selects{
+    /* min-width: 1000px; */
+    display: flex;
+    /* background: #00af66; */
+    height: 40px;
+}
+
+.buttons input{
+    display: none;
+}
+
+.buttons label{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+
+::-webkit-scrollbar{
+	background: #929292;
+    height: 8px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+/* ::-webkit-scrollbar-thumb{
+	background: #bdbdbd;
+    cursor: pointer;
+}  */
+
+.addFile.present{
+    background: #00af66;
+    color: #fff;
+}

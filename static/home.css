@@ -1,0 +1,504 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+nav h2{
+    font-family: Brush Script MT;
+    letter-spacing: 3;
+    font-size: 30px;
+    margin-left: 15px;
+    color: #00af66;
+}
+
+nav h2 a{
+    font-family: Brush Script MT;
+    letter-spacing: 3;
+    font-size: 30px;
+    margin-left: 15px;
+    color: #00af66;
+    text-decoration: none;
+}
+
+nav{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15),
+    0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.search{
+    display: flex;
+    width: 250px;
+    height: 100%;
+    transition: all 0.4s ease;
+    background: rgb(241, 241, 241);
+}
+
+.search button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding-right: 12px;
+    outline: none;
+    transition: all 0.4s ease;
+    height: 100%;
+    width: 30px;
+    transform: scale(0);
+    background: transparent;
+}
+
+.search button i:hover{
+    color: #00af66;
+    cursor: pointer;
+}
+
+.search.active{
+    width: 280px;
+}
+
+.search button.active{
+    transform: scale(1);
+}
+
+.search button i{
+    transition: all 0.4s ease;
+    transform: scale(1.4, 1.2);
+    color: #373737;
+}
+
+.fa-arrow-right{
+    font-size: 26px;
+}
+
+.search i{
+    font-size: 19px;
+}
+
+.search input{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    /* text-transform: capitalize; */
+    width: 95%;
+    height: 100%;
+    /* background: #00af66; */
+}
+
+
+.right-side{
+    display: flex;
+    align-items: center;
+}
+
+.right-side a{
+    text-decoration: none;
+    color: black;
+    margin: 0 7px;
+    font-size: 22px;
+}
+
+.right-side a:hover{
+    color: #00af66;
+}
+
+nav span{
+    display: flex;
+    width: auto;
+    height: 100%;
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.user img{
+     width: 35px;
+     border: 3px solid black;
+     height: 35px;
+     border-radius: 50%;
+     margin-right: 3px;
+     cursor: pointer;
+}
+
+
+.user p{
+    display: none;
+} 
+
+.catergories{
+    margin-top: 10px;
+    width: 100%;
+    /* overflow: hidden; */
+    position: relative;
+    top: 50px;
+    height: 30px;
+    /* background: blueviolet; */
+}
+
+.catergories ul{
+    display: flex;
+    width: 100%;
+    height: 30px;
+}
+
+.catergories ul li{
+    width: 150px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0px 5px;
+    border: 1px solid #bdbdbd;
+    color: #373737;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+    cursor: pointer;
+    /* background: rgb(242, 242, 242); */
+}
+
+.catergories ul li:hover{
+    background: #bdbdbd;
+}
+
+.catergories ul li.active{
+    background: #bdbdbd;
+}
+
+/* ::-webkit-scrollbar{
+	background: #929292;
+    height: 5px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb{
+	background: #bdbdbd;
+	height: 5px;
+    cursor: pointer;
+} */
+
+.book-container{
+    width: 97%;
+    position: relative;
+    top: 80px;
+    height: 100%;
+}
+
+.books{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    /* background: #373737; */
+}
+
+.none-available{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    left: 0px;
+    padding-top: 100px;
+    background: #fff;
+    height: 100%;
+}
+
+.none-available i{
+    font-size: 125px;
+    margin-bottom: 10px;
+}
+
+.none-available h1{
+    font-size: 36px;
+}
+
+.none-available p{
+  font-size: 20px;
+}
+
+.searchbooks{
+    top: 60px;
+}
+
+
+.book{
+    width: 200px;
+    height: 280px;
+    display: none;
+    flex-direction: column;
+    color: #414141;
+    overflow: hidden;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(110, 110, 110, 0.15),
+    0 3px 6px rgba(97, 97, 97, 0.15);
+}
+
+.book span{
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+}
+
+.book span p{
+    text-transform: capitalize;
+}
+
+.book a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.book a:hover{
+    text-decoration: underline;
+}
+
+.book span h3{
+ width: 500px;
+ text-transform: capitalize;
+}
+
+.book img{
+    width: 93%;
+    height: 200px;
+    position: relative;
+    top: 15px;
+}
+
+.book .labels{
+    position: absolute;
+    left: 5px;
+    bottom: 15px;
+}
+
+
+
+.account{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-details{
+    position: relative;
+  width: 290px;
+  height: 300px;
+  pointer-events: all;
+  display: block;
+  font-family: Agency FB;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15),
+  0 3px 6px rgba(0, 0, 0, 0.15);
+  /*background: #fff;*/
+  background: #fff;
+  opacity: 0;
+  color: #4b4b4b;
+  transition: all 0.3s ease;
+ transform: scale(0.5);
+}
+
+.account-details.reveal{
+    transform: scale(1);
+    opacity: initial;
+}
+
+
+.account.reveal{
+    background: rgb(255, 255, 255, .9);
+}
+
+.account-details .fa-user{
+    font-size: 110px;
+    position: relative;
+    margin-top: 10px;
+    top: 10%;
+    border-radius: 50%;
+}
+
+
+.account-details h2{
+    font-family: calibri;
+    font-size: 34px;
+    position: relative;
+    top: 10%;
+}
+
+.account-details p{
+    position: relative;
+    top: 9%;
+    font-family: arial;
+    color: #fa4444;
+
+}
+
+.account-details .buttons{
+   margin-top: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.account-details .status{
+    font-weight: bolder;
+    color: #000;
+    position: relative;
+    top: 20px;
+}
+
+
+.account-details button i{
+    margin-right: 3px;
+}
+
+.account-details button{
+    padding: 7px 13px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 0px 5px;
+    border: 2px solid #fa4444;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--mn-text);
+    transition: all 0.8s ease;
+}
+
+.account-details button:hover{
+    padding: 7px 9px;
+    color: #fff;
+    background: #fa4444;
+}
+
+/* .confirm-window{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    align-items: center;
+    color: #c0c0c0;
+    justify-content: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+}
+
+.confirm-window.reveal{
+    display: flex;
+} */
+
+.account-details .exit{
+    position: absolute;
+    top: 5%;
+    font-size: 22px;
+    cursor: pointer;
+    right: 5%;
+}
+
+.account-details .exit:hover{
+    color: #ba0000;
+}
+
+.account-details h5{
+    position: absolute;
+    top: 5px;
+    font-size: 15px;
+    color: #ad0000;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.account-details h5 a{
+    color: #ad0000;
+    text-decoration: none;
+}
+
+.account-details h5 a:hover{
+    color: #ad0000;
+    text-decoration: underline;
+}
+
+
+.confirm h2{
+    font-family: arial;
+    position: relative;
+    color: #e9e9e9;
+    width: 230px;
+    font-size: 20px;
+}
+
+.confirm .buttons{
+    position: relative;
+}
+
+
+.delete{
+    display: flex;
+}
+
+.delete h3{
+    width: 250px;
+}
+
+.confirm-window button{
+    padding: 7px 15px;
+    cursor: pointer;
+} 
+
+.confirm-window button:hover{
+    padding: 7px 17px;
+} 
+
+.confirm-window button a{
+    text-decoration: none;
+     color: var(--mn-text);
+}
+
+@media screen and (max-width: 450px){
+    .account-details{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 280px){
+    .account-details{
+        width: 95%;
+    }
+
+    .account-details h2{
+        font-size: 30px;
+    }
+}

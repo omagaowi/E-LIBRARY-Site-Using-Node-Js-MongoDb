@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | E-Library</title>
+    <link rel="stylesheet" href="/signin.css">
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <h1>E-Library</h1>
+            </div>
+            <div class="right-side">
+                <a href="/register">Sign Up</a>
+            </div>
+        </nav>
+        <div class="main">
+            <section class="login"> 
+                <form class="newform" action="/login" method="POST">
+                    <% if (messages.error) { %>
+                        <div class="alert alert-danger">
+                          <strong><%= messages.error %> </strong>
+                        </div>
+                      <% } %>
+                     <h3>Login</h3>
+                         <label for="" class="emailLabel"><input type="email" name="email" class="signupEmail"  pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" placeholder="." required></label>
+                         <label for="" class="passwordLabel"><input type="password" name="password" class="signupPassword" placeholder="." pattern="[a-zA-Z0-9-_@+=/\|]{8,}" class=""signupPassword required></label>
+                         <button class="loginBtn">Login</button>
+                     <h4>Don't have an Account? <a href="/register">Sign up</a></h4>
+                </form>
+             </section>
+        </div>
+    </div>
+</body>
+</html>

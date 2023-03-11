@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library| My Favourites</title>
+    <!-- <link rel="stylesheet" href="/home.css"> -->
+    <link rel="stylesheet" href="/readlist.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+</head>
+<body>
+    <div class="container" data-userid ="<%= userid %>">
+        <nav>
+            <h2><a href="/">E-Library</a></h2>
+            <div class="search"> 
+                <span><i class="fas fa-search"></i></span>
+                <input type="text" placeholder="Search...">
+                <button title="Search"><i class="fas fa-arrow-right"></i></button>
+            </div>
+             <div class="right-side">
+                <a href="/myreadlist" title="Reading List"><i class="fas fa-list"></i></a>
+                <a  href="/myfavourites" title="Favourites"><i class="far fa-star"></i></a>
+                <span  class="user"><img src="/images/USER2.png" alt="" title="Me"><p>Omaga O</p></span>
+             </div>
+        </nav>
+        <h1 class="readtitle">My Favourites</h1>
+        <div class="books">
+            <% if(lists.length == 0) {%>
+                <div class="none-available">
+                    <i class="fas fa-heart-broken"></i>
+                    <h1>It's Lonely Here</h1>
+                    <a href="/">Find Books To Add</a>
+                </div>
+                <% }else{ %>
+                    <% lists.forEach((list)=>{  %>
+
+                        <div class="book" data-bookid="<%= list.bookid %>">
+                            <div class="image">
+                                <img data-bookcover="<%= list.bookcover %>" src="data:list/<%=list.bookcover.contentType%>;base64,
+                                <%=list.bookcover.data.toString('base64')%>">
+                            </div>
+                            <div class="book-details">
+                                <h3 class="title" data-booktitle="<%= list.title %>"><a href="/readbook/<%= list.bookid %>"><%= list.title %></a></h3>
+                                <p class="author" data-bookauthor+="<%= list.author %>"><%= list.author %></p>
+                                <div class="actions">
+                                    <button  class="deleteBtn3" data-doc="<%= list.id %>" title="Remove From Favourites"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+        
+                    <% }) %>
+                <% } %>
+        </div>
+        <div class="account">
+            <div class="account-details">
+                <i class="fas fa-times exit"></i>
+                <% if(admin == true) {%>
+                    <h5><a href="/admin">Admin Account</a></h5>
+                <% } else {%>
+
+                <% } %>
+                <i class="fas fa-user"></i>
+                <h2 class=""><%=name  %></h2>
+                <p><i class="fas fa-envelope"></i><%=email %></p>
+                <!-- <a href="#" class="status">Admin</a> -->
+                <div class="buttons">
+                    <form action="/logout?_method=DELETE" method="POST">
+                        <button class="nav-link fw-bold py-1 px-0 btn p=3 btn-dark text-white" type="submit" ><i class="fas fa-sign-out-alt"></i> Logout</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const deleteBtn3 = document.querySelectorAll('.deleteBtn3')
+        const listBtn = document.querySelectorAll('.listBtn')
+        const titleElem = document.querySelector('.title');
+        const authorElem = document.querySelector('.author')
+    
+        deleteBtn3.forEach(element =>{
+            element.addEventListener('click', ()=>{
+            // console.log(deleteBtn.dataset.doc)
+            const endpoint = '/deletefavourite/' + element.dataset.doc;
+        
+                fetch(endpoint, {
+                    method: 'DELETE'
+                }).then(()=>{
+                    console.log('deleted')
+                    location.reload()
+                }).catch((err)=>{
+                    console.log(err)
+                })
+            })
+         })
+
+
+    </script>
+    <script src="/home.js"></script>
+</body>
+</html>

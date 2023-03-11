@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Center | All Users</title>
+    <link rel="stylesheet" href="/allusers.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+</head>
+<body>
+   <div class="container">
+    <span class="numbers">
+        Total Number of Users: <b><%=users.length  %></b>
+    </span>
+    <h1>All Users</h1>
+    <div class="usergrid">
+        <div class="row headers">
+            <div class="cell">
+                <h4>ID</h4>
+            </div>
+            <div class="cell">
+                <h4>Name</h4>
+            </div>
+            <div class="cell">
+                <h4>Email</h4>
+            </div>
+            <div class="cell">
+                <h4>Password</h4>
+            </div>
+            <div class="cell">
+                <h4>Admin?</h4>
+            </div>
+        </div>
+        <% users.forEach(element => { %>
+            <div class="row users">
+                <div class="cell">
+                    <p><%= element.id %></p>
+                </div>
+                <div class="cell">
+                    <p><%= element.name %></p>
+                </div>
+                <div class="cell">
+                    <p><%= element.email %></p>
+                </div>
+                <div class="cell">
+                    <p><%= element.password %></p>
+                </div>
+                <div class="cell">
+                    <p><%= element.admin %></p>
+                </div>
+                <button class="deleteBtn" data-doc="<%= element.id %>" title="Delete User">
+                    <div class="fas fa-trash"></div>
+                </button>
+            </div>
+        <% }) %>
+    </div>
+   </div>
+   <script>
+
+    const deleteBtn = document.querySelectorAll('.deleteBtn')
+
+    deleteBtn.forEach(button => {
+        button.addEventListener('click', ()=>{
+            const endpoint = '/deleteuser/' + button.dataset.doc
+            console.log(endpoint)
+
+            fetch(endpoint, {
+                method: 'DELETE'
+            }).then(()=>{
+                console.log('user' + button.dataset.doc + 'deleted')
+                location.href = '/admin'
+            })
+        })
+    })
+
+
+
+   </script>
+</body>
+</html>

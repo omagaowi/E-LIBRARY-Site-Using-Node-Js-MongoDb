@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Center| All Books</title>
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+    <style>
+        h1{
+            font-size: 45px;
+            position: absolute;
+            left: 22px;
+            color: #414141;
+            top: 15px;
+        }
+
+        .book-container{
+            top: 100px;
+        }
+
+        .book{
+            position: relative;
+            display: flex;
+        }
+
+        .admin-options{
+            width: 100%;
+            position: absolute;
+            display: none;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            background: rgb(255, 255, 255, .1);
+            height: 100%;
+        }
+
+        .deleteBtn{
+            background: none;
+            outline: none;
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            pointer-events: all;
+            bottom: 10px;
+            color: #a20000;
+            font-size: 20px;
+            border: none;
+        }
+
+        .book:hover .admin-options{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <h1>All Books</h1>
+        <div class="book-container">
+            <% if(allbooks.length == 0){ %>
+                <div class="none-available">
+                    <i class="fas fa-heart-broken"></i>
+                    <h1>No books available at the moment!</h1>
+                    <p>Please try again later</p>
+                    <a href="/admin">Admin Center</a>
+                </div>
+            <% }  else {%>
+                <div class="books homeboooks">
+                    <%allbooks.forEach(book =>{  %>
+                        <div class="book">
+                            <img src="data:book/<%=book.bookcover.contentType%>;base64,
+                            <%=book.bookcover.data.toString('base64')%>" alt="BOOK COVER">
+                            <div class="labels">
+                                <span><a href="/admin/editbook/<%= book.id %>"><h3><%= book.title %></h3></a></span>
+                                <span><p><%=book.author %></p></span>
+                            </div>
+                            <div class="admin-options">
+                                <button class="deleteBtn" data-doc="<%= book.id %>" title="Delete Book"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+            
+        </div>
+    </div>
+    <script>
+        const deleteButtons = document.querySelectorAll('.deleteBtn');
+
+        deleteButtons.forEach(element => {
+            element.addEventListener('click', ()=>{
+                const endpoint = '/deletebook/' + element.dataset.doc;
+            fetch(endpoint, {
+                method: 'DELETE'
+            }).then(()=>{
+                console.log('deleted' + element.dataset.doc)
+                location.reload()
+            }).catch((err)=>{
+                console.log(err)
+                console.log('error deleting' + element.dataset.doc)
+            })
+            // console.log(endpoint)
+            })
+        })
+
+    </script>
+</body>
+</html>

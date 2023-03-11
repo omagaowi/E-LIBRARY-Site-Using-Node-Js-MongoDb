@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | E-Library</title>
+    <link rel="stylesheet" href="/signin.css">
+    <link rel="stylesheet" href="/ALL.CSS">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+    <style>
+
+        .alert{
+            display: none;
+        }
+
+        .alert.show{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <h1>E-Library</h1>
+            </div>
+            <div class="right-side">
+                <a href="/login">Login</a>
+            </div>
+        </nav>
+        <div class="main">
+            <section class="login">
+    
+               <div class="newform" data-users="<%= userArray %>">
+                    <div class="alert alert-danger">
+                        <strong></strong>
+                    </div>
+                    <div class="emails">
+                        <% userArray.forEach(element => { %>
+                            <p data-users="<%= element %>"></p>
+                        <%  }) %>
+                    </div>
+                    <h3>Sign Up</h3>
+                        <label for="" class="emailLabel"><input type="email" name="email" class="signupEmail"  pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" placeholder="." required></label>
+                        <label for="" class="passwordLabel"><input type="password" name="password" class="signupPassword" placeholder="." pattern="[a-zA-Z0-9-_@+=/\|]{8,}" class=""signupPassword required></label>
+                        <button class="signupBtn">Sign Up</button>
+                    <h4>Have an Account? <a href="/login">Login</a></h4>
+               </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="second-login-bg">
+        <div class="second-login-window">
+            <span class="closeBtn" title="Close"><i class="fas fa-times"></i></span>
+            <div class="welcome-banner">
+                <h2>Welcome</h2>
+                <span></span>
+            </div>
+            <div class="second-login-form">
+                <label class="firstnLabel" for=""><input type="text" name="firstn" class="firstn" placeholder="." required></label>
+                <label  class="lastnLabel" for=""><input type="text" name="lastn" class="lastn" placeholder="." required> </label>
+                <button class="finishBtn">Finish</button>
+            </div>
+        </div>
+    </div>
+    <script src="/signup.js"></script>
+</body>
+</html>

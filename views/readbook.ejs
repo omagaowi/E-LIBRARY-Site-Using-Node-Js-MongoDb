@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Book| <%= bookname %> </title>
+    <link rel="stylesheet" href="/read.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web/CSS/ALL.CSS">
+</head>
+<body>
+    <% books.forEach(book => { %>
+        <div class="container" data-userid="<%= userid %>">
+            <div class="added">
+                <h3> <i class="fas fa-check"></i></i>Added</h3>
+            </div>
+            
+            <div class="part book-cover">
+                <img data-bookcover="<%= book.bookcover %>" src="data:book/<%=book.bookcover.contentType%>;base64,
+                        <%=book.bookcover.data.toString('base64')%>">
+            </div>
+            <div class="part book-details">
+                <div class="categories">
+                    <% if(Array.isArray(categories)){ %>
+                        <% categories.forEach(element => { %>
+                            <span><%= element %></span>
+                        <% }) %>
+                    <% }else{ %>
+                        <span><%= categories %></span>
+                    <% } %>
+
+                        
+                    <!-- <span>Educational</span>
+                    <span>Inspirational</span> -->
+                </div>
+               <form action="">
+                <input type="text" name="book-title" class="title" data-id="<%= book.id %>" value="<%= book.title %>" readonly>
+                <input type="text" name="book-author" class="author" value="<%= book.author %>" readonly>
+                <p class="destext">Description</p>
+                <div class="description">
+                   <p> <%= book.description %></p>
+                </div>
+                <div class="buttons">
+                    <button type="button"><i class="fas fa-book"></i><a href="/openbook/<%=book.updateId %>">Read Book</a></button>
+                     <button type="button" class="readlist readlistbtn"><i class="fas fa-plus"></i>Add to ReadList</button>
+                    <button type="button" class="favourites favouritebtn"><i class="far fa-star"></i>Add to Favourites</button>
+                </div>
+               </form>
+            </div>
+        </div>
+    <% }) %>
+    <script src="/readbook.js"></script>
+</body>
+</html>
