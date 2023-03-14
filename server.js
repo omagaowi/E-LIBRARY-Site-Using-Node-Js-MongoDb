@@ -3,8 +3,8 @@
 // }
 
 
-require("dotenv").config()
-const PORT = process.env.PORT || 3000;
+// require("dotenv").config()
+// const PORT = process.env.PORT || 3000;
 
 
 
@@ -46,7 +46,7 @@ let users = []
 app.use(express.urlencoded({extended: false}))
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'jbsiugsuiwo',
     resave: false, // We wont resave the session variable if nothing is changed
     saveUninitialized: false,
     store: MongoStore.create({
