@@ -374,8 +374,12 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
     db.collection('accounts').find().forEach(element => {
         users.push(element)
         // console.log(users);
+    }).then(()=>{
+        res.render("login.ejs")
+    }).catch((err)=>{
+        console.log(err)
     });
-    res.render("login.ejs")
+   
     // res.render("login.ejs")
 })
 
