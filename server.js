@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config()
 }
 
+const PORT = process.env.PORT || 3000;
 
 
 
@@ -26,7 +27,7 @@ connectToDb((err)=>{
     if(!err){
         db = getDb();
         console.log('connected to database')
-        app.listen(3000)
+        app.listen(PORT)
     }else{
         console.log(err)
     }
